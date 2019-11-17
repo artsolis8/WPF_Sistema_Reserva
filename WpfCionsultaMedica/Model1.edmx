@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ConsultaMedicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ConsultaMedicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -198,6 +198,30 @@
           <Property Name="fecha_fin" Type="datetime" />
           <Property Name="medico" Type="int" />
         </EntityType>
+        <Association Name="FK_Ciudad_Clinica">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Clinica" Type="Self.Clinica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Clinica">
+              <PropertyRef Name="ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clinica">
+          <End Role="Clinica" Type="Self.Clinica" Multiplicity="0..1" />
+          <End Role="Consultorio" Type="Self.Consultorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Consultorio">
+              <PropertyRef Name="clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -273,6 +297,14 @@
           <EntitySet Name="Turno" EntityType="Self.Turno" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vacacion" EntityType="Self.Vacacion" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ciudad_Clinica" Association="Self.FK_Ciudad_Clinica">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Clinica" EntitySet="Clinica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clinica" Association="Self.FK_Clinica">
+            <End Role="Clinica" EntitySet="Clinica" />
+            <End Role="Consultorio" EntitySet="Consultorio" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -290,8 +322,7 @@
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ConsultaMedicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -373,6 +404,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Clinica" Relationship="ConsultaMedicaModel.FK_Ciudad_Clinica" FromRole="Ciudad" ToRole="Clinica" />
         </EntityType>
         <EntityType Name="Clinica">
           <Key>
@@ -383,6 +415,8 @@
           <Property Name="direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ciudad" Type="Int32" />
           <Property Name="telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ciudad1" Relationship="ConsultaMedicaModel.FK_Ciudad_Clinica" FromRole="Clinica" ToRole="Ciudad" />
+          <NavigationProperty Name="Consultorio" Relationship="ConsultaMedicaModel.FK_Clinica" FromRole="Clinica" ToRole="Consultorio" />
         </EntityType>
         <EntityType Name="Consultorio">
           <Key>
@@ -391,6 +425,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="clinica" Type="Int32" />
+          <NavigationProperty Name="Clinica1" Relationship="ConsultaMedicaModel.FK_Clinica" FromRole="Consultorio" ToRole="Clinica" />
         </EntityType>
         <EntityType Name="Disponibilidad">
           <Key>
@@ -548,7 +583,39 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Ciudad_Clinica" Association="ConsultaMedicaModel.FK_Ciudad_Clinica">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Clinica" EntitySet="Clinica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clinica" Association="ConsultaMedicaModel.FK_Clinica">
+            <End Role="Clinica" EntitySet="Clinica" />
+            <End Role="Consultorio" EntitySet="Consultorio" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Ciudad_Clinica">
+          <End Type="ConsultaMedicaModel.Ciudad" Role="Ciudad" Multiplicity="0..1" />
+          <End Type="ConsultaMedicaModel.Clinica" Role="Clinica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Clinica">
+              <PropertyRef Name="ciudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clinica">
+          <End Type="ConsultaMedicaModel.Clinica" Role="Clinica" Multiplicity="0..1" />
+          <End Type="ConsultaMedicaModel.Consultorio" Role="Consultorio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clinica">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Consultorio">
+              <PropertyRef Name="clinica" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

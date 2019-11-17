@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfCionsultaMedica"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="Consultorio" Height="625.75" Width="525" Loaded="Window_Loaded">
+    <Canvas>
+        <GroupBox Header="Datos del Consultorio" Canvas.Left="27" Canvas.Top="10">
+            <Grid Width="399">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="NroConsultorio" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+                <Label Grid.Column="0" Grid.Row="1" Content="Descripcion" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+                <Label Grid.Column="0" Grid.Row="2" Content="Clinica" HorizontalAlignment="Right" Margin="0 0 5 0"/>
+
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="txtId" Width="120" Height="20" HorizontalAlignment="Left" IsReadOnly="True" Margin="10,2,0,10"/>
+                <TextBox Grid.Column="1" Grid.Row="1" x:Name="txtDescripcion" Height="35" Width="160" Margin="10,8,158,3"/>
+                <ComboBox Grid.Column="1" Grid.Row="2" x:Name="cboClinica" Height="25"/>
+                <GroupBox Header="Lista de Consultorios" Grid.ColumnSpan="2" Margin="-7,56,-11,-371" Grid.Row="2">
+                    <DataGrid x:Name="dgConsultorios"/>
+                </GroupBox>
+
+            </Grid>
+        </GroupBox>
+
+        <Button x:Name="btnGuardar" Content="Guardar" Canvas.Left="361" Canvas.Top="539" Click="btnGuardar_Click"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" Canvas.Left="165" Canvas.Top="539" Click="btnEliminar_Click"/>
+        <Button x:Name="btnModificar" Content="Modificar" Canvas.Left="259" Canvas.Top="539" Click="btnModificar_Click"/>
+        <Button x:Name="btnLimpiar" Content="Limpiar" Canvas.Left="75" Canvas.Top="539" Click="btnLimpiar_Click"/>
+
+    </Canvas>
+
 </Window>

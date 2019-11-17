@@ -25,6 +25,8 @@
         <AssociationConnector Association="ConsultaMedicaModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="ConsultaMedicaModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="ConsultaMedicaModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="ConsultaMedicaModel.FK_Ciudad_Clinica" />
+        <AssociationConnector Association="ConsultaMedicaModel.FK_Clinica" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
