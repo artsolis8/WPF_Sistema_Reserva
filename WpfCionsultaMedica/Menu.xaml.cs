@@ -30,6 +30,13 @@ namespace WpfCionsultaMedica
             ventana.ShowDialog();
         }
 
+
+        private void Citas_Click_(object sender, RoutedEventArgs e)
+        {
+            RegistroCitas citas = new RegistroCitas();
+            citas.ShowDialog();
+        }
+
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
 

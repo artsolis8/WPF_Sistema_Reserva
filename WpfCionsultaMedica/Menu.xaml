@@ -13,6 +13,10 @@
             <Separator />
             <MenuItem Header="Salir" />
         </MenuItem>
+        <MenuItem Header="Procesos">
+            <MenuItem Header="Registro Citas" Click="Citas_Click_" />
+            <Separator />
+        </MenuItem>
 
     </Menu>
 </Window>
