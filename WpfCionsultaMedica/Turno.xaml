@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfCionsultaMedica.Turno"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfCionsultaMedica"
+        mc:Ignorable="d"
+        Title="Turno" Height="297.957" Width="727.657">
+    <Grid Height="288" VerticalAlignment="Top" Margin="0,0,-8,-21" HorizontalAlignment="Left" Width="728">
+        <Label x:Name="lblTurno" Content="Turno" HorizontalAlignment="Left" Margin="38,31,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblHoraInicio" Content="Hora de Inicio" HorizontalAlignment="Left" Margin="38,85,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblHoraFin" Content="Hora de Fin" HorizontalAlignment="Left" Margin="38,141,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtTurno" HorizontalAlignment="Left" Height="23" Margin="172,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtHoraFin" HorizontalAlignment="Left" Height="23" Margin="172,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtHoraInicio" HorizontalAlignment="Left" Height="23" Margin="172,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="dgTurno" HorizontalAlignment="Left" Height="180" Margin="378,10,0,0" VerticalAlignment="Top" Width="314"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="279,225,0,0" VerticalAlignment="Top" Width="91" Click="BtnGuardar_Click_1"/>
+        <Button x:Name="btnModificar" Content="Modificar" HorizontalAlignment="Left" Margin="389,225,0,0" VerticalAlignment="Top" Width="98" Click="BtnModificar_Click"/>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="505,225,0,0" VerticalAlignment="Top" Width="92" Click="BtnEliminar_Click"/>
+        <Button x:Name="btnLimpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="617,225,0,0" VerticalAlignment="Top" Width="86" Click="BtnLimpiar_Click"/>
+
+    </Grid>
+</Window>

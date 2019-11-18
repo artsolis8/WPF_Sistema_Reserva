@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="Menu" WindowState="Maximized" Background="Black">
     <Menu Name="MenuPrincipal">
-        <MenuItem Header="Opciones">
+        <MenuItem Header="Opciones" Click="MenuItem_Click_1">
             <MenuItem Header="Consultorios" Click="MenuItem_Click" />
+            <MenuItem Header="Turno" Click="MenuItem_Click_2" />
             <Separator />
             <MenuItem Header="Salir" />
         </MenuItem>

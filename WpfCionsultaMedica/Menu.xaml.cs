@@ -29,5 +29,16 @@ namespace WpfCionsultaMedica
             MainWindow ventana = new MainWindow();
             ventana.ShowDialog();
         }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Turno ventana = new Turno();
+            ventana.ShowDialog();
+        }
     }
 }

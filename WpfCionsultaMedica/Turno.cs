@@ -16,7 +16,7 @@ namespace WpfCionsultaMedica
     {
         public int id { get; set; }
         public string descripcion { get; set; }
-        public Nullable<System.DateTime> hora_inicio { get; set; }
-        public Nullable<System.DateTime> hora_fin { get; set; }
+        public string hora_inicio { get; set; }
+        public string hora_fin { get; set; }
     }
 }
