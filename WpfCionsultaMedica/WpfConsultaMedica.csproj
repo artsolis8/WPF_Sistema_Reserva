@@ -94,6 +94,9 @@
     <Compile Include="Clinica.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Clinica.xaml.cs">
+      <DependentUpon>Clinica.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Consultorio.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -138,6 +141,10 @@
     <Compile Include="Vacacion.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Clinica.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
