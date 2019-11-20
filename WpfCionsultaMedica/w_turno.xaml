@@ -1,11 +1,11 @@
-﻿<Window x:Class="WpfCionsultaMedica.Turno"
+﻿<Window x:Class="WpfCionsultaMedica.w_turno"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfCionsultaMedica"
         mc:Ignorable="d"
-        Title="Turno" Height="297.957" Width="727.657">
+        Title="w_turno" Height="317.763" Width="742.105" Loaded="Window_Loaded">
     <Grid Height="288" VerticalAlignment="Top" Margin="0,0,-8,-21" HorizontalAlignment="Left" Width="728">
         <Label x:Name="lblTurno" Content="Turno" HorizontalAlignment="Left" Margin="38,31,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblHoraInicio" Content="Hora de Inicio" HorizontalAlignment="Left" Margin="38,85,0,0" VerticalAlignment="Top"/>

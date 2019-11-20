@@ -44,7 +44,7 @@ namespace WpfCionsultaMedica
 
         private void MenuItem_Click_2(object sender, RoutedEventArgs e)
         {
-            Turno ventana = new Turno();
+            w_turno ventana = new w_turno();
             ventana.ShowDialog();
         }
 

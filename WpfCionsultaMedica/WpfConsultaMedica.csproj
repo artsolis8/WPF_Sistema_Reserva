@@ -129,9 +129,6 @@
     <Compile Include="Turno.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Turno.xaml.cs">
-      <DependentUpon>Turno.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Usuario.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -140,6 +137,9 @@
     </Compile>
     <Compile Include="w_clinica.xaml.cs">
       <DependentUpon>w_clinica.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="w_turno.xaml.cs">
+      <DependentUpon>w_turno.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -161,11 +161,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Turno.xaml">
+    <Page Include="w_clinica.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="w_clinica.xaml">
+    <Page Include="w_turno.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -15,16 +15,17 @@ using System.Windows.Shapes;
 namespace WpfCionsultaMedica
 {
     /// <summary>
-    /// Lógica de interacción para Turno.xaml
+    /// Lógica de interacción para w_turno.xaml
     /// </summary>
-    public partial class Turno : Window
+    public partial class w_turno : Window
     {
         ConsultaMedicaEntities datos;
-        public Turno()
+        public w_turno()
         {
             InitializeComponent();
-            datos = new ConsultaMedicaEntities();
+            datos= new ConsultaMedicaEntities();
         }
+
         private void CargarDatosGrilla()
         {
             try
@@ -37,7 +38,10 @@ namespace WpfCionsultaMedica
                 MessageBox.Show(ex.Message);
             }
 
+
+
         }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             CargarDatosGrilla();
@@ -61,6 +65,7 @@ namespace WpfCionsultaMedica
             }
             else
                 MessageBox.Show("Debe seleccionar un Turno de la grilla para modificar!");
+
         }
 
         private void BtnGuardar_Click_1(object sender, RoutedEventArgs e)
@@ -73,14 +78,7 @@ namespace WpfCionsultaMedica
             datos.Turno.Add(turno);
             datos.SaveChanges();
             CargarDatosGrilla();
-        }
 
-        private void BtnLimpiar_Click(object sender, RoutedEventArgs e)
-        {
-            txtTurno.Text = "";
-            txtHoraInicio.Text = "";
-            txtHoraFin.Text = "";
-            CargarDatosGrilla();
         }
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
@@ -97,7 +95,15 @@ namespace WpfCionsultaMedica
             }
             else
                 MessageBox.Show("Debe seleccionar un Turno de la grilla para eliminar!");
+
+        }
+
+        private void BtnLimpiar_Click(object sender, RoutedEventArgs e)
+        {
+            txtTurno.Text = "";
+            txtHoraInicio.Text = "";
+            txtHoraFin.Text = "";
+            CargarDatosGrilla();
         }
     }
-
 }
