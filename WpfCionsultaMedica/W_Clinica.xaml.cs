@@ -15,24 +15,20 @@ using System.Windows.Shapes;
 namespace WpfCionsultaMedica
 {
     /// <summary>
-    /// Lógica de interacción para Clinica.xaml
+    /// Lógica de interacción para w_clinica.xaml
     /// </summary>
-    public partial class Clinica : Window
+    public partial class w_clinica : Window
     {
         ConsultaMedicaEntities datos;
-
-
-        public Clinica()
+        public w_clinica()
         {
             InitializeComponent();
             datos = new ConsultaMedicaEntities();
         }
-
         void CargarGrilla()
         {
             dgClinica.ItemsSource = datos.Clinica.ToList();
         }
-
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -41,7 +37,6 @@ namespace WpfCionsultaMedica
 
         private void BtnAgregar_Click(object sender, RoutedEventArgs e)
         {
-
             Clinica c = new Clinica();
             c.descripcion = txtDescripcion.Text;
             c.direccion = txtDireccion.Text;
@@ -72,7 +67,6 @@ namespace WpfCionsultaMedica
             }
             else
                 MessageBox.Show("Debe seleccionar una Clinica de la grilla para modificar!");
-
         }
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
@@ -96,8 +90,6 @@ namespace WpfCionsultaMedica
 
         }
 
-
-
         private void DgClinica_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (dgClinica.SelectedItem != null)
@@ -111,7 +103,6 @@ namespace WpfCionsultaMedica
                 txtTelefono.Text = c.telefono;
 
             }
-
         }
     }
 }

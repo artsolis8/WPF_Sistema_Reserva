@@ -10,6 +10,7 @@
         <MenuItem Header="Opciones" Click="MenuItem_Click_1">
             <MenuItem Header="Consultorios" Click="MenuItem_Click" />
             <MenuItem Header="Turno" Click="MenuItem_Click_2" />
+            <MenuItem Header="Clinica" Click="MenuItem_Click_3"/>
             <Separator />
             <MenuItem Header="Salir" />
         </MenuItem>

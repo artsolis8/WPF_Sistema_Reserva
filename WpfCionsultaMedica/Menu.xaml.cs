@@ -47,5 +47,11 @@ namespace WpfCionsultaMedica
             Turno ventana = new Turno();
             ventana.ShowDialog();
         }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            w_clinica ventana = new w_clinica();
+            ventana.ShowDialog();
+        }
     }
 }
