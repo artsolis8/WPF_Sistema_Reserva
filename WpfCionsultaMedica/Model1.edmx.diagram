@@ -27,6 +27,12 @@
         <AssociationConnector Association="ConsultaMedicaModel.AspNetUserRoles" ManuallyRouted="false" />
         <AssociationConnector Association="ConsultaMedicaModel.FK_Ciudad_Clinica" />
         <AssociationConnector Association="ConsultaMedicaModel.FK_Clinica" />
+        <AssociationConnector Association="ConsultaMedicaModel.FK_Cita_Consultorio" />
+        <AssociationConnector Association="ConsultaMedicaModel.FK_Cita_Turno" />
+        <AssociationConnector Association="ConsultaMedicaModel.FK_CitaFuncionario" />
+        <AssociationConnector Association="ConsultaMedicaModel.FK_CitaMedico" />
+        <AssociationConnector Association="ConsultaMedicaModel.FK_CitaPaciente" />
+        <AssociationConnector Association="ConsultaMedicaModel.FK_CitaReserva" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

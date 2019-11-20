@@ -14,6 +14,12 @@ namespace WpfCionsultaMedica
     
     public partial class Funcionario
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Funcionario()
+        {
+            this.Cita = new HashSet<Cita>();
+        }
+    
         public int id { get; set; }
         public Nullable<int> nro_doc { get; set; }
         public string nombre { get; set; }
@@ -24,5 +30,8 @@ namespace WpfCionsultaMedica
         public string ruc { get; set; }
         public Nullable<int> tipo_cargo { get; set; }
         public string email { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cita> Cita { get; set; }
     }
 }
