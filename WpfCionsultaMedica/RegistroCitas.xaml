@@ -19,6 +19,7 @@
         <Button x:Name="btnEliminar" Content="Eliminar" Canvas.Left="272" Canvas.Top="340" Click="btnEliminar_Click"/>
         <Button x:Name="btnModificar" Content="Modificar" Canvas.Left="366" Canvas.Top="340" Click="btnModificar_Click"/>
         <Button x:Name="btnLimpiar" Content="Limpiar" Canvas.Left="182" Canvas.Top="340" Click="btnLimpiar_Click"/>
+        <Button x:Name="btnLeer" Content="Leer" Canvas.Left="569" Canvas.Top="340" Click="btnLeer_Click"/>
         <TextBox Name="txtId" IsEnabled="False" Canvas.Left="196" Canvas.Top="38" Width="120"/>
         <ComboBox Name="cmbPaciente" Canvas.Left="196" Canvas.Top="65" Width="120"/>
         <ComboBox Name="cmbMedico" Canvas.Left="196" Canvas.Top="93" Width="120"/>
@@ -28,7 +29,8 @@
         <ComboBox Name="cmbReserva" Canvas.Left="196" Canvas.Top="250" Width="120"/>
         <DatePicker Name="dtpFecha" Canvas.Left="196" Canvas.Top="190" RenderTransformOrigin="0.56,-0.04"/>
         <GroupBox Header="Lista de Citas" Grid.ColumnSpan="2" Grid.Row="2" Canvas.Left="366" Canvas.Top="37" Height="265" Width="390">
-            <DataGrid x:Name="dgCitas"/>
+            <DataGrid SelectionMode="Single" x:Name="dgCitas"/>
         </GroupBox>
+        
     </Canvas>
 </Window>
