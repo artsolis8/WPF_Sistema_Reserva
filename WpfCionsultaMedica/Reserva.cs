@@ -31,10 +31,5 @@ namespace WpfCionsultaMedica
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cita> Cita { get; set; }
-        public override string ToString()
-        {
-            //es lo mas representativo de la clase persona.. podemos concatenar tambien varios campos..
-            return this.fecha_reservada.ToString();
-        }
     }
 }
