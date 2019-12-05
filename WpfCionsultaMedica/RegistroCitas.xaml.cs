@@ -140,9 +140,8 @@ namespace WpfCionsultaMedica
 
         private void btnLeer_Click(object sender, RoutedEventArgs e)
         {
-            hablar.Speak(cmbConsultorio.SelectedItem.ToString());
+            hablar.Speak(dgCitas.SelectedItem.ToString());
 
-            
         }
 
        
