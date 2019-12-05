@@ -53,5 +53,11 @@ namespace WpfCionsultaMedica
             w_clinica ventana = new w_clinica();
             ventana.ShowDialog();
         }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            ApiPaciente ventana = new ApiPaciente();
+            ventana.ShowDialog();
+        }
     }
 }

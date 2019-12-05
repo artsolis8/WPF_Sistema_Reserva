@@ -16,6 +16,7 @@
         </MenuItem>
         <MenuItem Header="Procesos">
             <MenuItem Header="Registro Citas" Click="Citas_Click_" />
+            <MenuItem Header="Api Pacientes" Click="MenuItem_Click_4"/>
             <Separator />
         </MenuItem>
 

@@ -11,7 +11,11 @@ namespace WpfCionsultaMedica
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
     
+
     public partial class Paciente
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +23,7 @@ namespace WpfCionsultaMedica
         {
             this.Cita = new HashSet<Cita>();
         }
-    
+
         public int id { get; set; }
         public Nullable<int> nro_doc { get; set; }
         public string nombre { get; set; }
@@ -31,8 +35,85 @@ namespace WpfCionsultaMedica
         public Nullable<int> tipo_sexo { get; set; }
         public Nullable<int> tipo_estado { get; set; }
         public string email { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cita> Cita { get; set; }
+
+        public override string ToString()
+        {
+            //es lo mas representativo de la clase persona.. podemos concatenar tambien varios campos..
+            return this.nombre;
+        }
+
+        //Se agrega el modificador async porque se ejecuta de forma asincrona, 
+        //para no "congelar" la interfaz del usuario (en backgroud)
+        public static async Task<List<Paciente>> ObtenerTodos()
+        {
+            //Creo una lista, para almacenar todas las personas que me retorne la API
+            List<Paciente> lstpersonas = new List<Paciente>();
+
+            //Creo un objeto client del tipo HttpClient con el que haremos las llamadas a la API rest.
+            using (var client = new HttpClient())
+            {
+                //La URI base (ojo que el puerto varía, tener en cuenta al usar como codigo de ejemplo, reemplazar el puerto de la API REST que corresponda)
+                client.BaseAddress = new Uri("http://localhost:62256/");
+
+                //Limpio los encabezados (headers)..
+                client.DefaultRequestHeaders.Accept.Clear();
+                //Y luego agrego solamente un header necesario: el que define el tipo de dato que es JSON
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                //Invocamos mediante el metodo "GetAsync" y le pasamos como parametro el Endpoint correspondiente
+                HttpResponseMessage respuesta = await client.GetAsync("api/Pacientes");
+                //Si la respuesta del servidor fue satisfactoria. IsSuccessStatusCode puede ser true/false.
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    //Almacenamos en una lista las Personas
+                    lstpersonas = await respuesta.Content.ReadAsAsync<List<Paciente>>();
+                }
+            }
+            return lstpersonas;
+        }
+         
+        public static async Task<bool> AgregarPaciente(Paciente p)
+        {
+            //Muy parecido con el anterior, varia el metodo "PostAsJsonAsync", ademas de la URI, se le pasa como pareametro el objeto Persona.
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:62256/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage respuesta = await client.PostAsJsonAsync("api/Pacientes", p); //Aqui va el Endpoint api/Personas, junto con el Objeto Persona (p), ya que el objeto tiene en los valores de sus atributos, los valores para crear un nuevo recurso Persona.
+                return respuesta.IsSuccessStatusCode;
+            }
+        }
+
+        public static async Task<bool> ModificarPersona(Paciente p)
+        {
+            //Muy parecido con el anterior, varia el metodo "PutAsJsonAsync", ademas de la URI se le pasa como pareametro el objeto Persona.
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:62256/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage respuesta = await client.PutAsJsonAsync("api/Pacientes/" + p.id, p); //Aqui se envia el EndPoint (por ejemplo) api/Personas/8 y el objeto Persona, ya que ahi estan los nuevos valores para modificar al recurso (Persona).
+                return respuesta.IsSuccessStatusCode;
+            }
+        }
+
+        public static async Task<bool> EliminarPaciente(Paciente p)
+        {
+            //Muy parecido con el anterior, varia el metodo "DeleteAsync"
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:62256/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage respuesta = await client.DeleteAsync("api/Pacientes/" + p.id); //Aqui necesitamos el Endpoint nada mas, seria por ejemplo, para acceder al recurso y eliminar a la persona de ID=8:  api/Personas/8 
+                return respuesta.IsSuccessStatusCode;
+            }
+        }
     }
+        
 }
