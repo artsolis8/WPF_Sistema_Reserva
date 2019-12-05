@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Speech.Synthesis;
 namespace WpfCionsultaMedica
 {
     /// <summary>
@@ -19,6 +19,8 @@ namespace WpfCionsultaMedica
     /// </summary>
     public partial class RegistroCitas : Window
     {
+
+        SpeechSynthesizer hablar = new SpeechSynthesizer();
         ConsultaMedicaEntities datos;
 
         public RegistroCitas()
@@ -37,7 +39,9 @@ namespace WpfCionsultaMedica
             cmbFuncionario.DisplayMemberPath = "nombre";
             cmbFuncionario.SelectedValuePath = "id";
             cmbPaciente.ItemsSource = datos.Paciente.ToList();
-            cmbPaciente.DisplayMemberPath = "nombre";
+            string nombre = cmbPaciente.DisplayMemberPath = "nombre";
+            string apellido = cmbPaciente.DisplayMemberPath = "apellido";
+
             cmbPaciente.SelectedValuePath = "id";
             cmbReserva.ItemsSource = datos.Reserva.ToList();
             cmbReserva.DisplayMemberPath = "paciente";
@@ -133,5 +137,14 @@ namespace WpfCionsultaMedica
             cmbReserva.SelectedIndex = -1;
             cmbTurno.SelectedIndex = -1;
         }
+
+        private void btnLeer_Click(object sender, RoutedEventArgs e)
+        {
+            hablar.Speak(cmbConsultorio.SelectedItem.ToString());
+
+            
+        }
+
+       
     }
 }
