@@ -11,11 +11,29 @@ namespace WpfCionsultaMedica
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
+
     public partial class Usuario
     {
         public int id { get; set; }
         public string usuario1 { get; set; }
         public string password { get; set; }
+
+
+        public static async Task<bool> ConsultarUsuario(Usuario p)
+        {
+            //Muy parecido con el anterior, varia el metodo "PostAsJsonAsync", ademas de la URI, se le pasa como pareametro el objeto Persona.
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:62256/");
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage respuesta = await client.PostAsJsonAsync("Account/Login/LoginWpf", p); 
+                return respuesta.IsSuccessStatusCode;
+            }
+        }
     }
 }
